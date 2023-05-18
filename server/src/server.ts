@@ -1,3 +1,3 @@
-const nome: string = 'Alan';
+import fastify from 'fastify';
 
-console.log(nome);
+const app = fastify();
