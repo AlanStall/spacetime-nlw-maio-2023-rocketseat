@@ -11,7 +11,7 @@ module.exports = {
         sans: 'var(--font-roboto)',
         alt: 'var(--font-bai-jamjuree)',
       },
-      color: {
+      colors: {
         gray: {
           50: '#eaeaea',
           100: '#bebebf',
