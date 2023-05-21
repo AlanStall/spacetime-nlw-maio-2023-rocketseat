@@ -46,8 +46,17 @@ export default function App() {
   );
 
   useEffect(() => {
+    // To run this console.log to see what the my IP, and to update him in github OAuth application
+    // console.log(makeRedirectUri({
+    //   scheme: 'nlwspacetime',
+    //   }),
+    // )
+    // console.log(response);
+    
     if (response?.type === 'success') {
       const { code } = response.params;
+
+      // console.log(code);
     }
   }, [response]);
 
