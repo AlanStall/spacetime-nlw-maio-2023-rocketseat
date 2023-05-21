@@ -13,7 +13,7 @@ export default function Home() {
         <div className="absolute bottom-0 right-2 top-0 w-2 bg-stripes" />
         {/* Sign in */}
         <a
-          href=""
+          href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`}
           className="flex items-center gap-3 text-left transition-colors hover:text-gray-300"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400">
@@ -37,7 +37,6 @@ export default function Home() {
               quiser) com o mundo!
             </p>
           </div>
-
           <a
             href=""
             className="inline-block rounded-full bg-green-500 px-5 py-3 text-center font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
@@ -45,7 +44,6 @@ export default function Home() {
             CADASTRAR LEMBRANÇA
           </a>
         </div>
-
         {/* Copyright */}
         <div className="text-sm leading-relaxed text-gray-300">
           Feito com 💜 no NLW da{' '}
