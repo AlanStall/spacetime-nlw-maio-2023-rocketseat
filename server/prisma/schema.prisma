@@ -8,6 +8,24 @@ datasource db {
 }
 
 model User {
-  id   String @id @default(uuid())
-  name String
+  id        String   @id @default(uuid())
+  githubId  Int      @unique
+  name      String
+  login     String
+  avatarUrl String
+  Memories  Memory[]
 }
+
+model Memory {
+  id     String @id @default(uuid())
+  userId String
+
+  coverUrl  String
+  content   String
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+// After started n created db schedule, npx prisma migrate reset and after npx prisma migrate dev - name created memories table
