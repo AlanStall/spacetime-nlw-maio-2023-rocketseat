@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import * as SecureStore from 'expo-secure-store'
 
 import {
   useFonts,
@@ -63,7 +64,11 @@ export default function App() {
       .then((response) => {
         const { token } = response.data
 
+        SecureStore.setItemAsync('token', token)
+
         console.log(token)
+      }).catch(err => {
+        console.error(err)
       })
 
       // console.log(code);
