@@ -1,17 +1,25 @@
-import { User } from 'lucide-react'
+import { getUser } from '@/lib/auth'
+import Image from 'next/image'
 
 export function Profile() {
+  const { name, avatarUrl } = getUser()
+
   return (
-    <a
-      href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`}
-      className="flex items-center gap-3 text-left transition-colors hover:text-gray-300"
-    >
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400">
-        <User className="h-5 w-5 text-gray-500" />
-      </div>
+    <div className="flex items-center gap-3 text-left">
+      <Image
+        src={avatarUrl}
+        width={40}
+        height={40}
+        alt=""
+        className="h-10 w-10 rounded-full"
+      />
+
       <p className="max-w-[140px] text-sm leading-snug">
-        <span className="underline">Crie sua conta</span> e salve suas memórias!
+        {name}
+        <a href="" className="block text-red-400 hover:text-red-300">
+          Quero sair
+        </a>
       </p>
-    </a>
+    </div>
   )
 }
