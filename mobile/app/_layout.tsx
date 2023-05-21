@@ -49,7 +49,8 @@ export default function Layout() {
             <StatusBar style="light" translucent />
             <Stack screenOptions={{ headerShown: true, contentStyle: { backgroundColor: 'transparent' } }}>
                 <Stack.Screen name="index" redirect={isUserAuthenticate}/>
-                <Stack.Screen name="memories"/>
+                <Stack.Screen name="new" />
+                <Stack.Screen name="memories" />
 
             </Stack>
         </ImageBackground>
