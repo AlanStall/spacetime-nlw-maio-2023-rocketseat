@@ -1,7 +1,7 @@
 'use client'
 
 import { Camera } from 'lucide-react'
-import { MediaPicker } from './mediaPicker'
+import { MediaPicker } from './MediaPicker'
 import { FormEvent } from 'react'
 import { api } from '@/lib/api'
 import Cookie from 'js-cookie'
