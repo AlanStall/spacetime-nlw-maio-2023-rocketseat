@@ -7,6 +7,8 @@ import NLWLogo from '../src/assets/nlw-spacetime-logo.svg';
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as ImagePicker from 'expo-image-picker';
+import * as SecureStore from 'expo-secure-store';
+import { api } from "../src/lib/api";
 
 export default function NewMemory() {
     const { bottom, top } = useSafeAreaInsets()
@@ -29,8 +31,31 @@ export default function NewMemory() {
         }
     }
 
-    function hendleCreateMemory() {
-        console.log(content, isPublic)
+    async function hendleCreateMemory() {
+        const token = await SecureStore.getItemAsync('token')
+
+        let coverUrl = ''
+
+        if (preview) {
+            const uploadFormData = new FormData() 
+
+            uploadFormData.append('file', {
+                uri: preview,
+                name: 'image.jpg',
+                type: 'image/jpeg',
+            } as any)
+
+            const uploadResponse = await api.post('/upload', uploadFormData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+
+            coverUrl = uploadResponse.data.fileUrl
+         
+            console.log(coverUrl)
+        }
+        
     }
 
     return (
@@ -72,6 +97,7 @@ export default function NewMemory() {
                     multiline
                     value={content}
                     onChangeText={setContent}
+                    textAlignVertical='top'
                     className="p-0 font-body text-lg text-gray-50"
                     placeholder="Fique livre para adicionar fotos, vídeos e relatos sobre essa experiência que você quer lembrar para sempre."
                     placeholderTextColor="#56565a"
