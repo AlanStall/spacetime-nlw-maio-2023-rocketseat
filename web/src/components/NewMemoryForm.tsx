@@ -5,8 +5,11 @@ import { MediaPicker } from './mediaPicker'
 import { FormEvent } from 'react'
 import { api } from '@/lib/api'
 import Cookie from 'js-cookie'
+import { useRouter } from 'next/navigation'
 
 export function NewMemoryForm() {
+  const router = useRouter()
+
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
@@ -40,6 +43,8 @@ export function NewMemoryForm() {
         },
       },
     )
+
+    router.push('/')
   }
 
   return (
