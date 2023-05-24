@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Image, Switch, Text, TextInput, View } from "react-native"
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import Icon from '@expo/vector-icons/Feather'
 
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg';
@@ -15,6 +15,8 @@ export default function NewMemory() {
     const [preview, setPreview] = useState<string | null>(null)
     const [content, setContent] = useState('')
     const [isPublic, setIsPublic] = useState(false)
+
+    const router = useRouter()
 
     async function openImagePicker() {
         try {
@@ -32,6 +34,7 @@ export default function NewMemory() {
     }
 
     async function hendleCreateMemory() {
+        
         const token = await SecureStore.getItemAsync('token')
 
         let coverUrl = ''
@@ -52,9 +55,20 @@ export default function NewMemory() {
             })
 
             coverUrl = uploadResponse.data.fileUrl
-         
-            console.log(coverUrl)
         }
+        await api.post('memories', {
+            content,
+            isPublic,
+            coverUrl,
+        }), {
+            headers: {
+                Authorization: `Bearer ${token}` 
+            }
+        }
+
+        router.push('/memories')
+        
+        
         
     }
 
