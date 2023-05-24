@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Image, Switch, Text, TextInput, View } from "react-native"
+import { Image, Switch, Text, TextInput, View, ScrollView, TouchableOpacity } from "react-native"
 import { Link, useRouter } from 'expo-router'
 import Icon from '@expo/vector-icons/Feather'
 
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg';
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as ImagePicker from 'expo-image-picker';
 import * as SecureStore from 'expo-secure-store';
@@ -34,13 +33,13 @@ export default function NewMemory() {
     }
 
     async function hendleCreateMemory() {
-        
+
         const token = await SecureStore.getItemAsync('token')
 
         let coverUrl = ''
 
         if (preview) {
-            const uploadFormData = new FormData() 
+            const uploadFormData = new FormData()
 
             uploadFormData.append('file', {
                 uri: preview,
@@ -62,14 +61,14 @@ export default function NewMemory() {
             coverUrl,
         }), {
             headers: {
-                Authorization: `Bearer ${token}` 
+                Authorization: `Bearer ${token}`
             }
         }
 
         router.push('/memories')
-        
-        
-        
+
+
+
     }
 
     return (
