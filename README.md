@@ -1,2 +1,3 @@
 Projeto do evento da NLW Rocketseat - Space time. 
-Uma semana com muito código e tecnologias. 
+Aplicação web e mobile. Tecnologias: React.js, React Native e Node.js. 
+Typescript, Next.js, TailwindCSS, Nativewind, Expo, Fastify.
