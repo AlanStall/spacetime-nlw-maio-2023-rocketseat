@@ -34,6 +34,8 @@ export async function authRoutes(app: FastifyInstance) {
       },
     })
 
+    console.log(userResponse.data + ' === aqui GITHUB')
+
     const userSchema = z.object({
       id: z.number(),
       login: z.string(),

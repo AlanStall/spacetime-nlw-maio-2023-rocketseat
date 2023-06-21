@@ -15,6 +15,8 @@ const discovery = {
     revocationEndpoint: 'https://github.com/settings/connections/applications/56d3ce5bd5175f7b6247',
 };
 
+console.log('teste github');
+
 export default function App() {
     const router = useRouter()
 
